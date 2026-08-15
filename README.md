@@ -1,2 +1,2 @@
-# From Internalization to Utilization: A Unified Skill Lifecycle Curriculum for LLM Agents
+# AUSO: Action-Level Unified Skill Optimization from Internalization to Utilization
 ## Action-Skill

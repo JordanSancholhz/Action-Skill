@@ -154,6 +154,7 @@ python3 -m verl.trainer.main_ppo_webshop_ood \
     +env.internalize.jsd_micro_batch_size_per_gpu=2 \
     +env.internalize.action_ig_beta=0.2 \
     +env.internalize.action_ig_clip=1.2 \
+    +env.guide_internalize=True \
     actor_rollout_ref.actor.ppo_epochs=1 \
     trainer.critic_warmup=0 \
     trainer.logger=['console'] \

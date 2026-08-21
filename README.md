@@ -74,11 +74,7 @@ search_data/
 ```
 
 The preprocessing step writes only the combined `test.parquet` and
-`val.parquet` files. ID/OOD is represented by each row's `data_source` label,
-so no separate `test_id`, `test_ood`, `val_id`, or `val_ood` parquet files are
-created. Periodic validation and final evaluation still report separate
-`val/id/*` and `val/ood/*` aggregates plus per-source metrics; training uses
-the smaller combined `val.parquet`, while `eval_search_qa.sh` evaluates the
+`val.parquet` files. Training uses the smaller combined `val.parquet`, while `eval_search_qa.sh` evaluates the
 full combined `test.parquet`.
 
 The retriever uses an E5 encoder and a FAISS Wikipedia index. Download and
@@ -208,8 +204,12 @@ export MODEL_PATH=/path/to/Qwen2.5-7B-Instruct
 export SEARCH_DATA="$PWD/search_data"
 bash scripts/train_search_qa.sh vllm
 ```
+---
+## Hardware
 
-
+```text
+All experiments are conducted on a server equipped with 4 NVIDIA H200 GPUs
+```
 
 ---
 

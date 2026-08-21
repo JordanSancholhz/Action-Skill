@@ -223,4 +223,4 @@ All experiments are conducted on a server equipped with 4 NVIDIA H200 GPUs
 
 ## Acknowledgement
 
-This project builds on [SkillRL](https://github.com/aiming-lab/SkillRL), [Skill0](https://github.com/ZJU-REAL/SkillZero), [Skill0.5](https://github.com/JasonZhujp/Skill0_5),[verl](https://github.com/volcengine/verl), [verl-agent](https://github.com/langfengQ/verl-agent), [ALFWorld](https://github.com/alfworld/alfworld), [WebShop](https://github.com/princeton-nlp/WebShop) and [Search-R1](https://github.com/PeterGriffinJin/Search-R1). We thank the authors of those projects.
+This project builds on [SkillRL](https://github.com/aiming-lab/SkillRL), [Skill0](https://github.com/ZJU-REAL/SkillZero), [Skill0.5](https://github.com/JasonZhujp/Skill0_5), [verl](https://github.com/volcengine/verl), [verl-agent](https://github.com/langfengQ/verl-agent), [ALFWorld](https://github.com/alfworld/alfworld), [WebShop](https://github.com/princeton-nlp/WebShop) and [Search-R1](https://github.com/PeterGriffinJin/Search-R1). We thank the authors of those projects.

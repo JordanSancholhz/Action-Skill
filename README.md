@@ -70,16 +70,16 @@ search_data/
 └── text/
     ├── train.parquet
     ├── test.parquet
-    ├── test_id.parquet
-    ├── test_ood.parquet
-    ├── val_id.parquet
-    ├── val_ood.parquet
-    └── val.parquet       # combined periodic ID + OOD monitoring set
+    └── val.parquet       
 ```
 
-Every periodic validation reports separate `val/id/*` and `val/ood/*`
-aggregates plus per-source metrics. `eval_search_qa.sh` evaluates the full
-combined `test.parquet`; training uses the smaller combined `val.parquet`.
+The preprocessing step writes only the combined `test.parquet` and
+`val.parquet` files. ID/OOD is represented by each row's `data_source` label,
+so no separate `test_id`, `test_ood`, `val_id`, or `val_ood` parquet files are
+created. Periodic validation and final evaluation still report separate
+`val/id/*` and `val/ood/*` aggregates plus per-source metrics; training uses
+the smaller combined `val.parquet`, while `eval_search_qa.sh` evaluates the
+full combined `test.parquet`.
 
 The retriever uses an E5 encoder and a FAISS Wikipedia index. Download and
 assemble the index (this is a large artifact, so keep it outside the repo):
@@ -215,4 +215,4 @@ bash scripts/train_search_qa.sh vllm
 
 ## Acknowledgement
 
-This project builds on [SkillRL](https://github.com/aiming-lab/SkillRL), [Skill0](https://github.com/ZJU-REAL/SkillZero), [Skill0.5](https://github.com/JasonZhujp/Skill0_5),[verl](https://github.com/volcengine/verl), [verl-agent](https://github.com/langfengQ/verl-agent), [ALFWorld](https://github.com/alfworld/alfworld), and [WebShop](https://github.com/princeton-nlp/WebShop). We thank the authors of those projects.
+This project builds on [SkillRL](https://github.com/aiming-lab/SkillRL), [Skill0](https://github.com/ZJU-REAL/SkillZero), [Skill0.5](https://github.com/JasonZhujp/Skill0_5),[verl](https://github.com/volcengine/verl), [verl-agent](https://github.com/langfengQ/verl-agent), [ALFWorld](https://github.com/alfworld/alfworld), [WebShop](https://github.com/princeton-nlp/WebShop) and [Search-R1](https://github.com/PeterGriffinJin/Search-R1). We thank the authors of those projects.

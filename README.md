@@ -4,6 +4,10 @@
 
 Existing skill-based RL methods rely on **coarse trajectory-level routing** to separate skill internalization and utilization, overlooking that skill guidance may affect individual actions differently. **AUSO (Action-Level Unified Skill Optimization)** unifies both at the **action level**, using JSD-based information gain to quantify how strongly skills influence each decision.
 
+<div align="center">
+  <img src="doc/model.png" alt="Logo" style="width:80%;">
+</div>
+
 AUSO follows a progressive skill lifecycle:
 
 * **Internalization**: distill general skills with action-level information-gain guidance.
@@ -13,6 +17,10 @@ AUSO follows a progressive skill lifecycle:
 Throughout training, skills evolve from **external supervision → autonomous exploration → information-gain-guided utilization**, while GRPO remains the shared optimization backbone.
 
 Experiments on **ALFWorld, WebShop, and Search-QA** demonstrate consistent improvements over strong skill-based RL baselines, particularly in OOD generalization.
+
+<div align="center">
+  <img src="doc/doc1.png" alt="Logo" style="width:80%;">
+</div>
 
 
 ---

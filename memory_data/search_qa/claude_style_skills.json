@@ -1,0 +1,190 @@
+{
+  "general_skills": [
+    {
+      "skill_id": "gen_001",
+      "title": "Decompose Before Searching",
+      "principle": "Break complex questions into minimal facts and retrieve each fact separately before synthesizing the answer.",
+      "when_to_apply": "Questions involving multiple entities, relations, comparisons, or dependent facts."
+    },
+    {
+      "skill_id": "gen_002",
+      "title": "Use Entity Plus Attribute Queries",
+      "principle": "Construct concise queries from the exact entity name and the missing attribute instead of repeating the full question.",
+      "when_to_apply": "Every initial fact lookup and any follow-up lookup for a known entity."
+    },
+    {
+      "skill_id": "gen_003",
+      "title": "Refine Rather Than Repeat",
+      "principle": "When evidence is weak, reformulate with aliases, dates, roles, locations, or quoted phrases; never submit the unchanged query repeatedly.",
+      "when_to_apply": "The retrieved passages are empty, ambiguous, or do not explicitly contain the requested fact."
+    },
+    {
+      "skill_id": "gen_004",
+      "title": "Resolve Entity Ambiguity",
+      "principle": "Disambiguate shared names by adding occupation, nationality, work title, year, or another relation from the question.",
+      "when_to_apply": "Search results mix multiple people, works, organizations, or places with the same name."
+    },
+    {
+      "skill_id": "gen_005",
+      "title": "Answer Only From Evidence",
+      "principle": "Do not finalize until a retrieved passage directly supports the answer; treat unsupported model memory as a hypothesis to verify.",
+      "when_to_apply": "Before emitting the final answer."
+    },
+    {
+      "skill_id": "gen_006",
+      "title": "Preserve Exact Answer Form",
+      "principle": "Return only the requested name, date, number, place, or short phrase and preserve distinctions that matter for exact-match scoring.",
+      "when_to_apply": "After identifying the supported answer."
+    },
+    {
+      "skill_id": "gen_007",
+      "title": "Stop When Evidence Is Sufficient",
+      "principle": "Once reliable evidence directly answers the question, stop searching and provide the answer instead of accumulating redundant passages.",
+      "when_to_apply": "A passage explicitly states the requested fact and no unresolved comparison remains."
+    },
+    {
+      "skill_id": "gen_008",
+      "title": "Track Retrieved Facts",
+      "principle": "Maintain a compact list of established entities and attributes so later queries build on evidence instead of restarting the reasoning chain.",
+      "when_to_apply": "Multi-turn and multi-hop search."
+    }
+  ],
+  "task_specific_skills": {
+    "direct_retrieval": [
+      {
+        "skill_id": "dir_001",
+        "title": "Core Fact Query",
+        "principle": "Search the subject together with the requested fact, such as author, release date, birthplace, population, or winner.",
+        "when_to_apply": "Single-hop who, what, when, or where questions."
+      },
+      {
+        "skill_id": "dir_002",
+        "title": "Quote Distinctive Titles",
+        "principle": "Put distinctive song, book, film, episode, or quoted phrases in quotation marks and append the requested attribute.",
+        "when_to_apply": "The question contains a named creative work or exact phrase."
+      },
+      {
+        "skill_id": "dir_003",
+        "title": "Use Answer-Type Constraints",
+        "principle": "Add a type cue such as actor, city, year, number of episodes, or organization when generic results dominate.",
+        "when_to_apply": "The first query retrieves the right topic but not the requested answer type."
+      },
+      {
+        "skill_id": "dir_004",
+        "title": "Extract Minimal Span",
+        "principle": "Read the passage for the exact answer span and return the shortest unambiguous form.",
+        "when_to_apply": "The relevant passage contains a longer sentence around a short factoid answer."
+      }
+    ],
+    "entity_attribute_lookup": [
+      {
+        "skill_id": "ent_001",
+        "title": "Entity Attribute Pair",
+        "principle": "Search the canonical entity name followed by the requested property, avoiding unrelated context from the original question.",
+        "when_to_apply": "PopQA-style occupation, birthplace, genre, nationality, or affiliation questions."
+      },
+      {
+        "skill_id": "ent_002",
+        "title": "Find Canonical Entity Name",
+        "principle": "If the entity is an alias or partial name, first retrieve its canonical name, then query the desired property.",
+        "when_to_apply": "Initial results do not clearly identify the intended entity."
+      },
+      {
+        "skill_id": "ent_003",
+        "title": "Prefer Biographical Statements",
+        "principle": "Look for passages that explicitly use patterns such as 'is a', 'was born in', 'member of', or 'known for'.",
+        "when_to_apply": "The requested attribute is biographical or categorical."
+      },
+      {
+        "skill_id": "ent_004",
+        "title": "Reject Neighbor Attributes",
+        "principle": "Verify that the passage describes the queried entity rather than a related person, parent organization, work, or location.",
+        "when_to_apply": "A passage contains several entities and several candidate attributes."
+      }
+    ],
+    "multi_hop_reasoning": [
+      {
+        "skill_id": "hop_001",
+        "title": "Identify the Bridge Entity",
+        "principle": "Determine which intermediate person, work, place, or organization connects the subject of the question to the requested answer.",
+        "when_to_apply": "The answer is an attribute of an entity that is not directly named."
+      },
+      {
+        "skill_id": "hop_002",
+        "title": "One Hop Per Query",
+        "principle": "Retrieve the first relation, record the intermediate entity, then issue a second query for that entity's requested attribute.",
+        "when_to_apply": "Two or more facts must be chained."
+      },
+      {
+        "skill_id": "hop_003",
+        "title": "Verify Every Link",
+        "principle": "Require explicit evidence for both the source-to-bridge relation and the bridge-to-answer relation.",
+        "when_to_apply": "Before finalizing a multi-hop answer."
+      },
+      {
+        "skill_id": "hop_004",
+        "title": "Use Intermediate Names Verbatim",
+        "principle": "Copy the canonical intermediate entity name from the retrieved passage into the next search query.",
+        "when_to_apply": "Moving from one hop to the next."
+      }
+    ],
+    "compare": [
+      {
+        "skill_id": "cmp_001",
+        "title": "Retrieve Values Independently",
+        "principle": "Search for each entity's relevant value separately instead of asking the search engine to perform the comparison.",
+        "when_to_apply": "Questions asking earlier, later, larger, smaller, older, younger, or whether attributes match."
+      },
+      {
+        "skill_id": "cmp_002",
+        "title": "Normalize Comparable Values",
+        "principle": "Convert retrieved facts to the same representation, such as four-digit years, full dates, or numeric counts, before comparing.",
+        "when_to_apply": "The two passages express values in different formats."
+      },
+      {
+        "skill_id": "cmp_003",
+        "title": "Keep Entity-Value Bindings",
+        "principle": "Record each value beside its entity so the final comparison cannot swap which fact belongs to which subject.",
+        "when_to_apply": "After each side of a comparison is retrieved."
+      },
+      {
+        "skill_id": "cmp_004",
+        "title": "Return the Requested Comparison Form",
+        "principle": "If the question asks which entity satisfies the comparison, answer with that entity rather than only returning the compared value.",
+        "when_to_apply": "The final reasoning step of a comparison question."
+      }
+    ]
+  },
+  "common_mistakes": [
+    {
+      "mistake_id": "err_001",
+      "description": "Repeating the full natural-language question as every search query.",
+      "why_it_happens": "The agent does not isolate the missing fact.",
+      "how_to_avoid": "Use concise entity-plus-attribute queries and reformulate after weak results."
+    },
+    {
+      "mistake_id": "err_002",
+      "description": "Answering from model memory before retrieving supporting evidence.",
+      "why_it_happens": "A familiar-looking entity creates false confidence.",
+      "how_to_avoid": "Verify the exact fact in a retrieved passage before answering."
+    },
+    {
+      "mistake_id": "err_003",
+      "description": "Emitting search and answer tags in the same action.",
+      "why_it_happens": "The agent mixes tool use with termination.",
+      "how_to_avoid": "Choose exactly one action per turn."
+    },
+    {
+      "mistake_id": "err_004",
+      "description": "Skipping an intermediate relation in a multi-hop question.",
+      "why_it_happens": "The agent jumps from the named subject to a plausible answer.",
+      "how_to_avoid": "Write down and verify the bridge entity before the final lookup."
+    },
+    {
+      "mistake_id": "err_005",
+      "description": "Returning an explanatory sentence that obscures the exact-match answer.",
+      "why_it_happens": "The agent optimizes for prose rather than factoid evaluation.",
+      "how_to_avoid": "Place only the shortest unambiguous answer inside the answer tags."
+    }
+  ]
+}

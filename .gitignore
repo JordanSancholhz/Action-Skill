@@ -1,4 +1,16 @@
 __pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+*.o
+wandb/
+outputs/
+*.log
+.DS_Store
+
+# Debug scripts (local only)
+scripts/debug*

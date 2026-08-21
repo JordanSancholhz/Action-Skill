@@ -5,7 +5,7 @@
 Existing skill-based RL methods rely on **coarse trajectory-level routing** to separate skill internalization and utilization, overlooking that skill guidance may affect individual actions differently. **AUSO (Action-Level Unified Skill Optimization)** unifies both at the **action level**, using JSD-based information gain to quantify how strongly skills influence each decision.
 
 <div align="center">
-  <img src="doc/model.png" alt="Logo" style="width:100%;">
+  <img src="doc/model1.png" alt="Logo" style="width:100%;">
 </div>
 
 AUSO follows a progressive skill lifecycle:

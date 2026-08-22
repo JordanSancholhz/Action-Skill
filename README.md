@@ -18,9 +18,6 @@ Throughout training, skills evolve from **external supervision → autonomous ex
 
 Experiments on **ALFWorld, WebShop, and Search-QA** demonstrate consistent improvements over strong skill-based RL baselines, particularly in OOD generalization.
 
-<div align="center">
-  <img src="doc/doc1.png" alt="Logo" style="width:100%;">
-</div>
 
 
 ---

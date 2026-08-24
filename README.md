@@ -1,5 +1,7 @@
 # AUSO: Action-Level Unified Skill Optimization from Internalization to Utilization
 
+## Paper URL: https://arxiv.org/abs/2608.21292
+
 ## Overview 
 
 Existing skill-based RL methods rely on **coarse trajectory-level routing** to separate skill internalization and utilization, overlooking that skill guidance may affect individual actions differently. **AUSO (Action-Level Unified Skill Optimization)** unifies both at the **action level**, using JSD-based information gain to quantify how strongly skills influence each decision.
